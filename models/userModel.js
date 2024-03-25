@@ -21,3 +21,17 @@ const userM = new mongoose.Schema({
 
 const User= mongoose.model("users", userM);
 module.exports=User;
+
+/* const newUser = new User({
+    name: "John Doe",
+    email: "johndoe@example.com",
+    password: "s3cret"
+  });
+  
+  newUser.save()
+    .then(doc => {
+      console.log("Kullanıcı başarıyla eklendi:", doc);
+    })
+    .catch(err => {
+      console.error("Kullanıcı eklenirken hata oluştu:", err);
+    }); */
