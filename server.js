@@ -4,6 +4,13 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/connectDb');
 
+// m c birbirine bağlandı, router çağılmalı
+
+const userRouter = require('./routes/userRoute');
+
+//route cağırılır
+
+
 
 
 //rest islemleri
@@ -20,6 +27,8 @@ app.get("/",(req,res) =>{
 
     //res.send('{<h1>welcomem</>}')
 })
+
+app.use('/',userRouter);
 
 //connect databasi bağlayacağız
 db();
