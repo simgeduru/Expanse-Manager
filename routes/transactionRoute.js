@@ -3,7 +3,8 @@ const {createTransaction,
 getTransaction,
 getByIdTransaction,
 updateTransaction,
-deleteTransaction}
+deleteTransaction,
+getUserTransactions}
 = require('../controllers/transactionController');
 
 const router = express.Router();
@@ -17,5 +18,9 @@ router.get('/get',getTransaction);
 router.get('/:id',getByIdTransaction);
 router.put('/:id',updateTransaction);
 router.delete('/:id', deleteTransaction);
+//kullanıcı işlemleri
+router.get('/userTransactions', getUserTransactions);
+//router.post('/userTransactionsByDateRange', getUserTransactionsByDateRange);
+
 
 module.exports=router;

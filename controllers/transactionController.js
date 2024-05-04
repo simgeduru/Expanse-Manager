@@ -63,3 +63,35 @@ exports.deleteTransaction= async (req,res)=>{
 }
 
 //kullanici
+
+//kullanıcının tüm transactionlarını alma işlemi
+exports.getUserTransactions = async (req, res) => {
+    try {
+      const userTransactions = await transactionM.find({ user: req.userId });
+      if (!userTransactions) return res.status(404).json({ message: "Kullanıcı işlemleri bulunamadı." });
+      res.status(200).json(userTransactions);
+    } catch (error) {
+      res.status(500).json({ message: "Sunucu hatası." });
+    }
+  };
+  
+
+  //belirli bir tarih aralığında kullanıcının transactionlarını getirme
+  //emin değilim buradan
+
+  /* exports.getUserTransactionsByDateRange = async (req, res) => {
+  try {
+    const { startDate, endDate } = req.body;
+    const userTransactions = await transactionM.find({
+      user: req.userId,
+      date: { $gte: startDate, $lte: endDate }
+    });
+    if (!userTransactions) return res.status(404).json({ message: "Kullanıcı işlemleri bulunamadı." });
+    res.status(200).json(userTransactions);
+  } catch (error) {
+    res.status(500).json({ message: "Sunucu hatası." });
+  }
+};
+ */
+
+module.exports={createTransaction,getAllTransaction,getByIdTransaction,updateTransaction,deleteTransaction,getUserTransactions};
